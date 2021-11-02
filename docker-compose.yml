@@ -1,0 +1,35 @@
+version: '3'
+services:
+
+  redis:
+    image: redis
+    ports:
+      - 6379:6379
+
+  cgv-api-customer:
+    image: cgv-api-customer
+    container_name: cgv-api-customer
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - cgv-api-customer-node-modules:/cgv-api-customer/node_modules
+      - ./:/cgv-api-customer
+    depends_on:
+      - redis
+    links:
+      - redis
+    environment:
+      PORT: 8081
+      DB_HOST:
+      DB_PASS: 
+      DB_USER: 
+      DB_POOL_MIN: 0
+      DB_POOL_MAX: 10
+      DB_IDLE_TIMEOUT_IN_SECONDS: 30
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+    ports:
+      - 8081:8081
+volumes:
+  cgv-api-customer-node-modules:

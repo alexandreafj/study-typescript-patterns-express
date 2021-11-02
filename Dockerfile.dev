@@ -1,0 +1,19 @@
+FROM node:13-alpine
+
+RUN \
+apk update && \
+apk upgrade && \
+apk add --upgrade dumb-init && \
+apk add git
+
+WORKDIR /cgv-api-customer
+
+RUN chown -R node /cgv-api-customer
+
+USER node
+
+COPY --chown=node:node ["package.json", "package-lock.json", "./"]
+
+RUN npm ci
+
+CMD ["dumb-init", "npm", "run", "start:api:dev"]

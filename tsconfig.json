@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+      "preserveConstEnums": true,
+      "target": "es6",
+      "module": "commonjs",
+      "rootDir": "./",
+      "esModuleInterop": true,
+      "strict": true,
+      "strictNullChecks": true,
+      "noImplicitAny": true,
+      "allowUnreachableCode": true,
+      "experimentalDecorators": true
+    },
+    "include": ["src/**/*"],
+}
