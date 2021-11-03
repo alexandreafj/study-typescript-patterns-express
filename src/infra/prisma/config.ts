@@ -1,0 +1,9 @@
+const {
+    PRISMA_QUERY_MAX_WAIT,
+    PRISMA_QUEYR_TIMETOUT
+} = process.env;
+
+export {
+    PRISMA_QUERY_MAX_WAIT,
+    PRISMA_QUEYR_TIMETOUT
+}

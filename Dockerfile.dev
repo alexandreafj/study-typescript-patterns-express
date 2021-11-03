@@ -16,4 +16,10 @@ COPY --chown=node:node ["package.json", "package-lock.json", "./"]
 
 RUN npm ci
 
+USER root
+
+RUN npm i -g prisma
+
+USER node
+
 CMD ["dumb-init", "npm", "run", "start:api:dev"]

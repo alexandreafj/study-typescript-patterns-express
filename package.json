@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:api:dev": "nodemon src/infra/http/app.ts",
+    "start:api:dev": "nodemon src/infra/http/app.ts && prisma generate --schema=./src/infra/prisma/schema.prisma",
     "build": "tsc --project ./"
   },
   "keywords": [],
@@ -18,15 +18,16 @@
     "@types/morgan": "^1.9.3",
     "@types/node": "^16.11.6",
     "nodemon": "^2.0.14",
+    "prisma": "^3.4.0",
     "ts-node": "^10.4.0",
     "typescript": "^4.4.4"
   },
   "dependencies": {
+    "@prisma/client": "^3.4.0",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "helmet": "^4.6.0",
-    "knex": "^0.95.12",
     "morgan": "^1.10.0",
     "typeorm": "^0.2.38",
     "uuidv4": "^6.2.12"

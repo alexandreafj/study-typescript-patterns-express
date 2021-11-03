@@ -18,4 +18,12 @@ RUN npm ci
 
 COPY --chown=node:node ./cgv-api-customer .
 
+USER root
+
+RUN npm i -g prisma
+
+RUN prisma generate --schema=./src/infra/prisma/schema.prisma
+
+USER node
+
 CMD ["dumb-init", "node", "./src/infra/http/app.js"]
